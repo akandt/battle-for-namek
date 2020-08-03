@@ -10,12 +10,15 @@ const attack = () => Math.floor(Math.random() * 2) + 1;
 const startBattle = () => {
     while (friezaHealth > 0) {
         friezaHealth = friezaHealth - attack();
-        userHealth = userHealth - attack();
+        if (friezaHealth > 0){
+            userHealth = userHealth - attack();
+        }
+        // Don't want negative health, so setting to 0
         if (friezaHealth < 0){
-            friezaHealth = friezaHealth * 0;
+            friezaHealth = 0;
         }
         if (userHealth < 0){
-            userHealth = userHealth * 0;
+            userHealth = 0;
         }
         console.log(`Frieza has ${friezaHealth} health left.`);
         console.log(`${userName} has ${userHealth} health left.`);
